@@ -42,7 +42,7 @@ class Contact
                $"Address: {Address}\n" +
                $"City: {City}\n" +
                $"State: {State}\n" +
-               $"Zip Code: {Zip}\n" +
+               $"ZIP Code: {Zip}\n" +
                $"Phone Number: {PhoneNumber}\n" +
                $"Email: {Email}\n";
     }
@@ -77,6 +77,21 @@ class AddressBook
             Console.WriteLine("Contact not found in the address book.");
         }
     }
+
+    public void DeleteContact(string firstName, string lastName)
+    {
+        Contact contactToDelete = FindContactByName(firstName, lastName);
+
+        if (contactToDelete != null)
+        {
+            contacts.Remove(contactToDelete);
+            Console.WriteLine("Contact deleted successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Contact not found in the address book.");
+        }
+    }
 }
 
 class Program
@@ -91,8 +106,9 @@ class Program
             Console.WriteLine("1. Add a contact");
             Console.WriteLine("2. Search for a contact");
             Console.WriteLine("3. Edit a contact");
-            Console.WriteLine("4. Exit");
-            Console.Write("Enter your choice (1, 2, 3, or 4): ");
+            Console.WriteLine("4. Delete a contact");
+            Console.WriteLine("5. Exit");
+            Console.Write("Enter your choice (1, 2, 3, 4, or 5): ");
             string choice = Console.ReadLine();
 
             if (choice == "1")
@@ -169,6 +185,16 @@ class Program
             }
             else if (choice == "4")
             {
+                Console.Write("\nEnter the first name of the contact to delete: ");
+                string firstNameToDelete = Console.ReadLine();
+                Console.Write("Enter the last name of the contact to delete: ");
+                string lastNameToDelete = Console.ReadLine();
+
+                addressBook.DeleteContact(firstNameToDelete, lastNameToDelete);
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("Exiting the program. Goodbye!");
                 break;
             }
             else
