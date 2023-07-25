@@ -92,6 +92,14 @@ class AddressBook
             Console.WriteLine("Contact not found in the address book.");
         }
     }
+
+    public void DisplayContacts()
+    {
+        foreach (var contact in contacts)
+        {
+            Console.WriteLine(contact);
+        }
+    }
 }
 
 class Program
@@ -107,8 +115,9 @@ class Program
             Console.WriteLine("2. Search for a contact");
             Console.WriteLine("3. Edit a contact");
             Console.WriteLine("4. Delete a contact");
-            Console.WriteLine("5. Exit");
-            Console.Write("Enter your choice (1, 2, 3, 4, or 5): ");
+            Console.WriteLine("5. Display all contacts");
+            Console.WriteLine("6. Exit");
+            Console.Write("Enter your choice (1, 2, 3, 4, 5, or 6): ");
             string choice = Console.ReadLine();
 
             if (choice == "1")
@@ -156,9 +165,11 @@ class Program
                 {
                     Console.WriteLine("\nContact not found in the address book.");
                 }
-            }
+            
+        }
             else if (choice == "3")
             {
+
                 Console.Write("\nEnter the first name of the contact to edit: ");
                 string firstNameToEdit = Console.ReadLine();
                 Console.Write("Enter the last name of the contact to edit: ");
@@ -182,7 +193,8 @@ class Program
                 string newEmail = Console.ReadLine();
 
                 addressBook.UpdateContact(firstNameToEdit, lastNameToEdit, newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
-            }
+            
+        }
             else if (choice == "4")
             {
                 Console.Write("\nEnter the first name of the contact to delete: ");
@@ -193,6 +205,11 @@ class Program
                 addressBook.DeleteContact(firstNameToDelete, lastNameToDelete);
             }
             else if (choice == "5")
+            {
+                Console.WriteLine("\nContacts in the Address Book:");
+                addressBook.DisplayContacts();
+            }
+            else if (choice == "6")
             {
                 Console.WriteLine("Exiting the program. Goodbye!");
                 break;
