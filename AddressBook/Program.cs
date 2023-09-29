@@ -203,11 +203,11 @@ class Program
             }
             else if (choice == "3")
             {
-                // ... (Edit contact functionality, same as before)
+                
             }
             else if (choice == "4")
             {
-                // ... (Delete contact functionality, same as before)
+              
             }
             else if (choice == "5")
             {
